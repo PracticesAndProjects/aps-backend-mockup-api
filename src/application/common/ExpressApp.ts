@@ -1,6 +1,7 @@
 import { Request, Response, Router } from "express";
 import express from "express";
 import generalRoutes from "../routes/GeneralRoutes";
+import userRoutes from "../routes/UserRoutes";
 
 const createExpressApp = async () => {
   const app = express();
@@ -18,6 +19,7 @@ const createExpressApp = async () => {
   // });
 
   generalRoutes(router);
+  userRoutes(router);
 
   app.use(router);
 
