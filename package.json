@@ -2,9 +2,13 @@
   "name": "aps-backend-mockup-api",
   "version": "1.0.0",
   "description": "",
-  "main": "src/application/index.js",
+  "main": "build/application/index.js",
   "type": "commonjs",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
+    "start": "node build/application/index.js",
     "dev": "ts-node-dev src/application/index.ts",
     "clean": "rimraf build",
     "build": "npm run clean & tsc",
