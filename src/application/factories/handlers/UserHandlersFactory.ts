@@ -1,12 +1,20 @@
-import { FetchUsersService } from "../../../implementation/user/services";
-import { FetchUserByIdHandler } from "../../../presentation/user/handlers/FetchUsersByIdHandler";
-import { FetchUsersHandler } from "../../../presentation/user/handlers/FetchUsersHandler";
-import { fetchUserByIdUseCase, fetchUsersUseCase } from "../services";
+import {
+  FetchUserByIdHandler,
+  FetchUsersHandler,
+  SingupUserHandler,
+} from "../../../presentation/user/handlers/";
+
+import {
+  fetchUserByIdUseCase,
+  fetchUsersUseCase,
+  signupUserUsecase,
+} from "../services";
 
 const appendUserHandler = (handlerName: string) =>
   ({
     FetchUserById: new FetchUserByIdHandler(fetchUserByIdUseCase),
     FetchUsers: new FetchUsersHandler(fetchUsersUseCase),
+    SingupUserHandler: new SingupUserHandler(signupUserUsecase),
   }[handlerName]);
 
 export { appendUserHandler };

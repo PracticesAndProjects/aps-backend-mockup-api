@@ -1,15 +1,15 @@
 interface IUserModel {
   id: number;
-  typology: number;
   username: string;
+  password: string;
   profile: IUserProfile;
 }
 
 interface IUserProfile {
   name: string;
   email: string;
-  idType: number;
-  id: number;
+  typology: number;
+  documentNumber: number;
 }
 
 export { IUserModel };

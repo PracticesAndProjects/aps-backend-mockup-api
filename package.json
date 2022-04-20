@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node build/application/index.js",
-    "dev": "ts-node-dev src/application/index.ts",
+    "dev": "ts-node-dev --respawn src/application/index.ts",
     "clean": "rimraf build",
     "build": "npm run clean & tsc",
     "commit": "cz"

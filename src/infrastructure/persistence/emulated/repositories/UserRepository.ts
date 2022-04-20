@@ -4,37 +4,43 @@ const mockupUserDatabase: IUserModel[] = [
   {
     id: 1,
     username: "sampleuser",
-    typology: 1,
+    password: "samplepwd",
     profile: {
       name: "John Doe",
       email: "johndoe@mail.com",
-      idType: 1,
-      id: generateRandomId(1),
+      typology: 1,
+      documentNumber: generateRandomId(1),
     },
   },
   {
     id: 2,
     username: "nextuser",
-    typology: 1,
+    password: "samplepwd",
+
     profile: {
       name: "Devon Arfield",
       email: "ddevn@mail.com",
-      idType: 1,
-      id: generateRandomId(1),
+      typology: 1,
+      documentNumber: generateRandomId(1),
     },
   },
   {
     id: 3,
     username: "samplecompany",
-    typology: 2,
+    password: "samplepwd",
     profile: {
       name: "Target",
       email: "talk@target.com",
-      idType: 2,
-      id: generateRandomId(2),
+      typology: 2,
+      documentNumber: generateRandomId(2),
     },
   },
 ];
+
+interface ICreateUserResponse {
+  success: boolean;
+  user?: IUserModel;
+}
 
 export default class UserRepository {
   async fetchOneById(id: number): Promise<IUserModel> {
@@ -43,6 +49,27 @@ export default class UserRepository {
 
   async fetchAll(): Promise<IUserModel[]> {
     return mockupUserDatabase;
+  }
+
+  async createSingle(data: IUserModel): Promise<ICreateUserResponse> {
+    const newUser: IUserModel = {
+      id: mockupUserDatabase.length + 1,
+      username: data.username,
+      password: data.password,
+      profile: {
+        name: data.profile.name,
+        email: data.profile.email,
+        typology: data.profile.typology,
+        documentNumber: data.profile.documentNumber,
+      },
+    };
+
+    mockupUserDatabase.push(newUser);
+
+    return {
+      success: true,
+      user: newUser,
+    };
   }
 }
 

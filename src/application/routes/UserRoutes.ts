@@ -7,5 +7,11 @@ export default (router: Router) => {
     "/api/v1/users/:userId",
     adaptRoute(appendUserHandler("FetchUserById"))
   );
+
   router.get("/api/v1/users", adaptRoute(appendUserHandler("FetchUsers")));
+
+  router.post(
+    "/api/v1/users",
+    adaptRoute(appendUserHandler("SingupUserHandler"))
+  );
 };
