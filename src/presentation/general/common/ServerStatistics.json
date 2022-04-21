@@ -2,7 +2,7 @@
   "details": {
     "name": "Baldur API",
     "description": "Mockup Data Fetching API for RecyclePlace development.",
-    "version": "1.0.11"
+    "version": "1.0.12"
   },
   "endpoints": {
     "users": [

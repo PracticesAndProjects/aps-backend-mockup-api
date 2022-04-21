@@ -1,6 +1,6 @@
 const fs = require("fs");
 const exec = require("util").promisify(require("child_process").exec);
-const STATS_PATH = "../src/implementation/general/common/ServerStatistics.json";
+const STATS_PATH = "../src/presentation/general/common/ServerStatistics.json";
 const stats = require(STATS_PATH);
 
 // Simplified Version Control based on Semantic Versioning.
@@ -14,6 +14,7 @@ const stats = require(STATS_PATH);
 // It will not follow Semantic Versioning rules as it should.
 
 (async () => {
+  const args = process.argv.slice(2);
   const version = stats.details.version;
   const versions = version.split(".");
 
@@ -23,14 +24,19 @@ const stats = require(STATS_PATH);
   const { stdout } = await exec("git rev-list --all --count");
   versions[2] = Number(stdout);
 
+  if (args[0] === "commit") {
+    versions[2] += 1;
+    console.log("Incrementing version pre-commit as requested.");
+  }
+
   // Validate if update is needed
   const newVersion = versions.join(".");
   console.log("Detected microversion: ", newVersion);
+
   if (version === newVersion) {
     console.log("Version is already up to date. No changes were made.");
     return;
   }
-
   // Write new version
   stats.details.version = newVersion;
   fs.writeFileSync(

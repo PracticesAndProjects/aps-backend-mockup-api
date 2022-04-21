@@ -13,7 +13,7 @@
     "clean": "rimraf build",
     "build": "npm run clean & tsc",
     "increment-micro-version": "node ./tools/IncrementMicroVersion.js",
-    "commit": "npm run increment-micro-version & cz"
+    "commit": "npm run increment-micro-version commit & cz"
   },
   "keywords": [],
   "author": "",
