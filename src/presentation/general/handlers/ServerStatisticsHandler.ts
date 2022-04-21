@@ -1,15 +1,13 @@
 import { IExpressRouteHandler } from "../../../domain/usecases/ExpressRouteHandler";
+// @ts-ignore
+import ServerStatistics from "../common/ServerStatistics.json";
 
 class ServerStatisticsHandler implements IExpressRouteHandler {
   async handle() {
     try {
       return {
         statusCode: 200,
-        body: {
-          name: "Baldur API",
-          description: "Mockup Data Fetching for RecyclePlace development.",
-          version: "1.0.0",
-        },
+        body: ServerStatistics,
       };
     } catch (err) {
       return {

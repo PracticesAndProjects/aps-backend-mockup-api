@@ -12,7 +12,8 @@
     "dev": "ts-node-dev --respawn src/application/index.ts",
     "clean": "rimraf build",
     "build": "npm run clean & tsc",
-    "commit": "cz"
+    "increment-micro-version": "node ./tools/IncrementMicroVersion.js",
+    "commit": "npm run increment-micro-version & cz"
   },
   "keywords": [],
   "author": "",
